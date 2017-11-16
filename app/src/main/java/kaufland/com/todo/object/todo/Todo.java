@@ -27,7 +27,7 @@ public class Todo {
     private Todo todoObject;
 
     @Ignore
-    private AppDatabase db = Room.databaseBuilder(AddTodoActivity.getContext(), AppDatabase.class, "todo").build();
+    private AppDatabase db = Room.databaseBuilder(new AddTodoActivity().getContext(), AppDatabase.class, "todo").build();
 
     @Ignore
     private List<Todo> todos = new ArrayList<>();
@@ -41,16 +41,16 @@ public class Todo {
             @Override
             public void run() {
                 db.todoDao().insertTodo(todoParam);
-                getAllTodos();
             }
         });
     }
 
-    private List<Todo> getAllTodos() {
+    public List<Todo> getAllTodos() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 todos = db.todoDao().loadAllTodos();
+                System.out.println("TODO:" + todos.get(0).getTodo() + todos.get(0).getDescription());
             }
         });
         return todos;

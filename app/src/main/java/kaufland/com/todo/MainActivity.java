@@ -15,13 +15,14 @@ public class MainActivity extends AppCompatActivity {
     private Button addTodo;
     private Button addGoals;
     private static Context context;
+    private MainActivity myActivity = MainActivity.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getApplicationContext();
         setContentView(R.layout.activity_main);
-        new Thread(new Runnable() {
+        myActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 (addTodo = findViewById(R.id.BaddTodo)).setOnClickListener(new View.OnClickListener() {
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
-        }).start();
+        });
 
     }
 
