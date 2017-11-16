@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">TODO</string>
+    <string name="title_activity_add_todo">Add TODO\'S</string>
+    <string name="title_activity_add_goal">Add Goal</string>
+    <string name="title_activity_add_date_for_goal">Add Date</string>
+</resources>
