@@ -1,4 +1,4 @@
-package kaufland.com.todo.object.goal.activity;
+package kaufland.com.todo.ui.goal;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import kaufland.com.todo.R;
-import kaufland.com.todo.object.goal.Goal;
-import kaufland.com.todo.object.goal.GoalRepository;
+import kaufland.com.todo.db.entity.Goal;
+import kaufland.com.todo.GoalRepository;
 
 public class AddGoalActivity extends AppCompatActivity {
 
@@ -37,5 +37,9 @@ public class AddGoalActivity extends AppCompatActivity {
 
     public GoalRepository getGoalRepository() {
         return goalRepository;
+    }
+
+    public Goal getGoal() {
+        return goal;
     }
 }

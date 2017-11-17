@@ -1,4 +1,4 @@
-package kaufland.com.todo.db;
+package kaufland.com.todo.db.dao;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
@@ -7,7 +7,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import kaufland.com.todo.object.todo.Todo;
+import kaufland.com.todo.db.entity.Todo;
 
 @Dao
 public interface TodoDao {

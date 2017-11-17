@@ -1,4 +1,4 @@
-package kaufland.com.todo.db;
+package kaufland.com.todo.db.dao;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
@@ -8,7 +8,7 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import kaufland.com.todo.object.goal.Goal;
+import kaufland.com.todo.db.entity.Goal;
 
 @Dao
 public interface GoalDao {

@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,15 +19,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".object.todo.activity.AddTodoActivity"
+            android:name=".ui.todo.AddTodoActivity"
             android:label="@string/title_activity_add_todo"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".object.goal.activity.AddGoalActivity"
+            android:name=".ui.goal.AddGoalActivity"
             android:label="@string/title_activity_add_goal"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".object.goal.activity.AddDateForGoalActivity"
+            android:name=".ui.goal.AddDateForGoalActivity"
             android:label="@string/title_activity_add_date_for_goal"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

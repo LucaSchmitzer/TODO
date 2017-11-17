@@ -1,4 +1,4 @@
-package kaufland.com.todo.object.goal;
+package kaufland.com.todo;
 
 import android.arch.persistence.room.Room;
 import android.os.Handler;
@@ -11,7 +11,8 @@ import java.util.Calendar;
 import java.util.List;
 
 import kaufland.com.todo.db.AppDatabase;
-import kaufland.com.todo.object.goal.activity.AddDateForGoalActivity;
+import kaufland.com.todo.db.entity.Goal;
+import kaufland.com.todo.ui.goal.AddDateForGoalActivity;
 
 /**
  * Created by lsch0909 on 16.11.17.

@@ -1,4 +1,4 @@
-package kaufland.com.todo;
+package kaufland.com.todo.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,13 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import kaufland.com.todo.object.goal.activity.AddGoalActivity;
-import kaufland.com.todo.object.todo.activity.AddTodoActivity;
+import kaufland.com.todo.R;
+import kaufland.com.todo.ui.goal.AddGoalActivity;
+import kaufland.com.todo.ui.todo.AddTodoActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button addTodo;
+
     private Button addGoals;
+
     private MainActivity myActivity = MainActivity.this;
 
     @Override

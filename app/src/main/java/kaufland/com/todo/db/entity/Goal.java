@@ -1,12 +1,16 @@
-package kaufland.com.todo.object.goal;
+package kaufland.com.todo.db.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(primaryKeys = {"goal", "date"}, tableName = "goal")
+@Entity(tableName = "goal")
 public class Goal {
+
+    @PrimaryKey
+    private int id;
 
     @ColumnInfo(name = "goal")
     @NonNull
@@ -17,10 +21,17 @@ public class Goal {
     private String date;
 
 
-    public Goal(String goal, String date) {
+    public Goal(int id, String goal, String date) {
+        this.id = id;
         this.goal = goal;
         this.date = date;
     }
+    @Ignore
+    public Goal(@NonNull String goal, @NonNull String date) {
+        this.goal = goal;
+        this.date = date;
+    }
+
     @Ignore
     public Goal() {
     }
@@ -44,5 +55,9 @@ public class Goal {
 
     public void setDate(@NonNull String date) {
         this.date = date;
+    }
+
+    public int getId() {
+        return id;
     }
 }

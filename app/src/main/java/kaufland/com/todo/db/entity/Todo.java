@@ -1,12 +1,16 @@
-package kaufland.com.todo.object.todo;
+package kaufland.com.todo.db.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(primaryKeys = {"todo", "description"}, tableName = "todo")
+@Entity(tableName = "todo")
 public class Todo {
+
+    @PrimaryKey
+    private int id;
 
     @ColumnInfo(name = "todo")
     @NonNull
@@ -17,10 +21,16 @@ public class Todo {
     private String description;
 
 
+    public Todo(@NonNull int id, @NonNull String todo, @NonNull String description) {
+        this.todo = todo;
+        this.description = description;
+    }
+    @Ignore
     public Todo(@NonNull String todo, @NonNull String description) {
         this.todo = todo;
         this.description = description;
     }
+
     @Ignore
     public Todo() {
     }
@@ -41,5 +51,7 @@ public class Todo {
         this.todo = todo;
     }
 
-
+    public int getId() {
+        return id;
+    }
 }

@@ -1,4 +1,4 @@
-package kaufland.com.todo.object.todo;
+package kaufland.com.todo;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
@@ -6,6 +6,7 @@ import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
 import kaufland.com.todo.db.AppDatabase;
+import kaufland.com.todo.db.entity.Todo;
 
 public class TodoRepository extends AndroidViewModel {
 

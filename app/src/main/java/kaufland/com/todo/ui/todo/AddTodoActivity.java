@@ -1,18 +1,17 @@
-package kaufland.com.todo.object.todo.activity;
+package kaufland.com.todo.ui.todo;
 
 import android.arch.lifecycle.LiveData;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import kaufland.com.todo.MainActivity;
 import kaufland.com.todo.R;
-import kaufland.com.todo.object.todo.Todo;
-import kaufland.com.todo.object.todo.TodoRepository;
+import kaufland.com.todo.TodoRepository;
+import kaufland.com.todo.db.entity.Todo;
+import kaufland.com.todo.ui.MainActivity;
 
 public class AddTodoActivity extends AppCompatActivity {
 
@@ -25,6 +24,8 @@ public class AddTodoActivity extends AppCompatActivity {
     private Todo todo;
 
     private AddTodoActivity myActivity;
+
+    private LiveData<Todo> todos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,21 +47,13 @@ public class AddTodoActivity extends AppCompatActivity {
         });
     }
 
-
-    private void saveToDB() {
-        new AsyncTask(){
-            LiveData<Todo> todos;
-            @Override
-            protected LiveData<Todo> doInBackground(Object... objects) {
-                myActivity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        new TodoRepository(getApplication()).saveTodo(todo);
-                        todos = new TodoRepository(getApplication()).getAllTodos();
-                    }
-                });
-                return todos;
+    private LiveData<Todo> saveToDB() {
+        new Thread() {
+            public void run() {
+                new TodoRepository(getApplication()).saveTodo(todo);
+                todos = new TodoRepository(getApplication()).getAllTodos();
             }
-        }.execute();
+        }.start();
+        return todos;
     }
 }
