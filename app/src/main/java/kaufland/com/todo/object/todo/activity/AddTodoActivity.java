@@ -1,18 +1,18 @@
 package kaufland.com.todo.object.todo.activity;
 
-import android.content.Context;
+import android.arch.lifecycle.LiveData;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.List;
-
 import kaufland.com.todo.MainActivity;
 import kaufland.com.todo.R;
 import kaufland.com.todo.object.todo.Todo;
+import kaufland.com.todo.object.todo.TodoRepository;
 
 public class AddTodoActivity extends AppCompatActivity {
 
@@ -22,58 +22,45 @@ public class AddTodoActivity extends AppCompatActivity {
 
     private TextView todoTitle;
 
-    private Context context;
+    private Todo todo;
 
-    private String todo;
-
-    private String description;
-
-    private AddTodoActivity myActivity = AddTodoActivity.this;
-
-    private boolean bool = false;
+    private AddTodoActivity myActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        init();
-
-
-        myActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                addTodo.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        todo = todoTitle.getText().toString();
-                        description = todoDescription.getText().toString();
-                        bool = true;
-                    }
-                });
-            }
-        });
-
-        myActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                if (bool) {
-                    new Todo().saveTodo(new Todo().createTodo(todo, description));
-                    List<Todo>todoList = new Todo().getAllTodos();
-                    bool = false;
-                }
-            }
-        });
-    }
-
-    private void init() {
-        context = getApplicationContext();
         setContentView(R.layout.activity_add_todo);
         todoTitle = findViewById(R.id.todoTitle);
         todoDescription = findViewById(R.id.description);
         addTodo = findViewById(R.id.BaddTodo);
+        myActivity = AddTodoActivity.this;
+        addTodo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                todo = new Todo();
+                todo.setTodo(todoTitle.toString());
+                todo.setDescription(todoDescription.toString());
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                saveToDB();
+            }
+        });
     }
 
-    public Context getContext() {
-        return context;
+
+    private void saveToDB() {
+        new AsyncTask(){
+            LiveData<Todo> todos;
+            @Override
+            protected LiveData<Todo> doInBackground(Object... objects) {
+                myActivity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        new TodoRepository(getApplication()).saveTodo(todo);
+                        todos = new TodoRepository(getApplication()).getAllTodos();
+                    }
+                });
+                return todos;
+            }
+        }.execute();
     }
 }

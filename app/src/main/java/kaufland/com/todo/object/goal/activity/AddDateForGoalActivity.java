@@ -10,7 +10,6 @@ import android.widget.DatePicker;
 
 import kaufland.com.todo.MainActivity;
 import kaufland.com.todo.R;
-import kaufland.com.todo.object.goal.Goal;
 
 public class AddDateForGoalActivity extends AppCompatActivity {
 
@@ -25,13 +24,12 @@ public class AddDateForGoalActivity extends AppCompatActivity {
         context = getApplicationContext();
         setContentView(R.layout.activity_add_date_for_goal);
         datePicker = findViewById(R.id.dateGoal);
-
         (save = findViewById(R.id.save)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                String date = new AddGoalActivity().getGoal().getDateFromDatePicker(datePicker);
-                new Goal().saveGoal(new Goal().createGoal(new AddGoalActivity().getGoal().getGoal(), date));
+                String date = new AddGoalActivity().getGoalRepository().getDateFromDatePicker(datePicker);
+              //  new GoalRepository().saveGoal(new GoalRepository().createGoal(new AddGoalActivity().getG().getGoal(), date));
             }
         });
     }
