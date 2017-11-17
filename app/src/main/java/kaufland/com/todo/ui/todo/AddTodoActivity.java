@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import kaufland.com.todo.R;
-import kaufland.com.todo.TodoRepository;
+import kaufland.com.todo.data.TodoRepository;
 import kaufland.com.todo.db.entity.Todo;
 import kaufland.com.todo.ui.MainActivity;
 
@@ -51,7 +51,6 @@ public class AddTodoActivity extends AppCompatActivity {
         new Thread() {
             public void run() {
                 new TodoRepository(getApplication()).saveTodo(todo);
-                todos = new TodoRepository(getApplication()).getAllTodos();
             }
         }.start();
         return todos;

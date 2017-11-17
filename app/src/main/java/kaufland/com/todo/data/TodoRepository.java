@@ -1,4 +1,4 @@
-package kaufland.com.todo;
+package kaufland.com.todo.data;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
@@ -20,11 +20,6 @@ public class TodoRepository extends AndroidViewModel {
         super(application);
         db = AppDatabase.getDatabase(this.getApplication());
         todoList = db.todoDao().loadAllTodos();
-    }
-
-
-    public Todo createTodo(String todo, String description) {
-        return todoObject = new Todo(todo, description);
     }
 
     public void saveTodo(Todo todoParam) {

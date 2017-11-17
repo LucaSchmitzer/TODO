@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import kaufland.com.todo.R;
 import kaufland.com.todo.db.entity.Goal;
-import kaufland.com.todo.GoalRepository;
+import kaufland.com.todo.data.GoalRepository;
 
 public class AddGoalActivity extends AppCompatActivity {
 

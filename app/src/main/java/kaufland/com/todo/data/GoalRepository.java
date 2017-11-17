@@ -1,14 +1,13 @@
-package kaufland.com.todo;
+package kaufland.com.todo.data;
 
+import android.app.Application;
+import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Room;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.support.annotation.NonNull;
 import android.widget.DatePicker;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 import kaufland.com.todo.db.AppDatabase;
 import kaufland.com.todo.db.entity.Goal;
@@ -18,16 +17,21 @@ import kaufland.com.todo.ui.goal.AddDateForGoalActivity;
  * Created by lsch0909 on 16.11.17.
  */
 
-public class GoalRepository {
+public class GoalRepository extends AndroidViewModel{
 
     private Calendar calendar;
 
     private Goal goalObject;
 
-    private AppDatabase db = Room.databaseBuilder(AddDateForGoalActivity.getContext(), AppDatabase.class, "goal").build();
+    private AppDatabase db;
 
+    private LiveData<Goal> goals;
 
-    private List<Goal> goalList = new ArrayList<>();
+    public GoalRepository(@NonNull Application application){
+        super(application);
+        db = Room.databaseBuilder(AddDateForGoalActivity.getContext(), AppDatabase.class, "goal").build();
+        goals = db.goalDao().loadAllGoals();
+    }
 
     public String getDateFromDatePicker(DatePicker datePicker) {
         calendar.set(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
@@ -43,13 +47,7 @@ public class GoalRepository {
         db.goalDao().insertGoal(goalParameter);
     }
 
-    private List<Goal> getAllGoals() {
-        new Handler(Looper.getMainLooper()) {
-            @Override
-            public void handleMessage(Message message) {
-                goalList = db.goalDao().loadAllGoals();
-            }
-        };
-        return goalList;
+    public LiveData<Goal> getAllGoals() {
+        return goals = db.goalDao().loadAllGoals();
     }
 }
