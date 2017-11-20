@@ -5,20 +5,20 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.support.annotation.NonNull;
 
-@Entity(primaryKeys = {"todoValue", "description"})
+@Entity(primaryKeys = {"todo", "description"})
 public class Todo {
 
-    @ColumnInfo(name = "todoValue")
+    @ColumnInfo(name = "todo")
     @NonNull
-    private String todoValue;
+    private String todo;
 
     @ColumnInfo(name = "description")
     @NonNull
     private String description;
 
 
-    public Todo(@NonNull String todoValue, @NonNull String description) {
-        this.todoValue = todoValue;
+    public Todo(@NonNull String todo, @NonNull String description) {
+        this.todo = todo;
         this.description = description;
     }
 
@@ -34,12 +34,12 @@ public class Todo {
         this.description = description;
     }
 
-    public String getTodoValue() {
-        return todoValue;
+    public String getTodo() {
+        return todo;
     }
 
-    public void setTodoValue(String todoValue) {
-        this.todoValue = todoValue;
+    public void setTodo(String todo) {
+        this.todo = todo;
     }
 
 }

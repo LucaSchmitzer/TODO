@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="kaufland.com.todoValue">
+    package="kaufland.com.todo">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.todoValue.AddTodoActivity"
+            android:name=".ui.todo.AddTodoActivity"
             android:label="@string/title_activity_add_todo"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

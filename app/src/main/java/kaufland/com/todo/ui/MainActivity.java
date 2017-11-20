@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import kaufland.com.todo.ui.goal.AddGoalActivity;
 import kaufland.com.todo.ui.todo.AddTodoActivity;
-import kaufland.com.todoValue.R;
+import kaufland.com.todo.R;
 
 public class MainActivity extends AppCompatActivity {
 

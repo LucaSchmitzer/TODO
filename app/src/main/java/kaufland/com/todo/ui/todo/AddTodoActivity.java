@@ -12,7 +12,7 @@ import java.util.List;
 import kaufland.com.todo.data.TodoRepository;
 import kaufland.com.todo.db.entity.Todo;
 import kaufland.com.todo.ui.MainActivity;
-import kaufland.com.todoValue.R;
+import kaufland.com.todo.R;
 
 public class AddTodoActivity extends AppCompatActivity {
 
@@ -37,7 +37,7 @@ public class AddTodoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 todo = new Todo();
-                todo.setTodoValue(todoTitle.toString());
+                todo.setTodo(todoTitle.toString());
                 todo.setDescription(todoDescription.toString());
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 saveToDB();

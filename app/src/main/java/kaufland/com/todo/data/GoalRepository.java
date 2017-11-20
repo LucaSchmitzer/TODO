@@ -2,12 +2,12 @@ package kaufland.com.todo.data;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Room;
 import android.support.annotation.NonNull;
 import android.widget.DatePicker;
 
 import java.util.Calendar;
+import java.util.List;
 
 import kaufland.com.todo.db.AppDatabase;
 import kaufland.com.todo.db.entity.Goal;
@@ -25,7 +25,7 @@ public class GoalRepository extends AndroidViewModel{
 
     private AppDatabase db;
 
-    private LiveData<Goal> goals;
+    private List<Goal> goals;
 
     public GoalRepository(@NonNull Application application){
         super(application);
@@ -47,7 +47,7 @@ public class GoalRepository extends AndroidViewModel{
         db.goalDao().insertGoal(goalParameter);
     }
 
-    public LiveData<Goal> getAllGoals() {
+    public List<Goal> getAllGoals() {
         return goals = db.goalDao().loadAllGoals();
     }
 }

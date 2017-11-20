@@ -1,6 +1,5 @@
 package kaufland.com.todo.ui.goal;
 
-import android.arch.lifecycle.LiveData;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 
+import java.util.List;
+
+import kaufland.com.todo.R;
 import kaufland.com.todo.data.GoalRepository;
 import kaufland.com.todo.db.entity.Goal;
 import kaufland.com.todo.ui.MainActivity;
-import kaufland.com.todoValue.R;
 
 public class AddDateForGoalActivity extends AppCompatActivity {
 
@@ -20,6 +21,7 @@ public class AddDateForGoalActivity extends AppCompatActivity {
     private DatePicker datePicker;
     private static Context context;
     private String date;
+    private List<Goal> goals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +39,13 @@ public class AddDateForGoalActivity extends AppCompatActivity {
         });
     }
 
-    private void saveToDB(){
-        new GoalRepository(getApplication()).saveGoal(new Goal(new AddGoalActivity().getGoal().getGoal(), date));
-    }
-
-    private LiveData<Goal> getDataFromDB(){
-        LiveData<Goal> goals = new GoalRepository(getApplication()).getAllGoals();
+    private List<Goal> saveToDB() {
+        new Thread() {
+            public void run() {
+                new GoalRepository(getApplication()).saveGoal(new Goal(new AddGoalActivity().getGoal().getGoal(), date));
+                goals = new GoalRepository(getApplication()).getAllGoals();
+            }
+        }.start();
         return goals;
     }
 
