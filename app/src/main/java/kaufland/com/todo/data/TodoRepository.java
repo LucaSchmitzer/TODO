@@ -2,8 +2,9 @@ package kaufland.com.todo.data;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
+
+import java.util.List;
 
 import kaufland.com.todo.db.AppDatabase;
 import kaufland.com.todo.db.entity.Todo;
@@ -14,7 +15,7 @@ public class TodoRepository extends AndroidViewModel {
 
     private AppDatabase db;
 
-    private LiveData<Todo> todoList;
+    private List<Todo> todoList;
 
     public TodoRepository(@NonNull Application application) {
         super(application);
@@ -26,7 +27,7 @@ public class TodoRepository extends AndroidViewModel {
         db.todoDao().insertTodo(todoParam);
     }
 
-    public LiveData<Todo> getAllTodos() {
+    public List<Todo> getAllTodos() {
         return db.todoDao().loadAllTodos();
     }
 

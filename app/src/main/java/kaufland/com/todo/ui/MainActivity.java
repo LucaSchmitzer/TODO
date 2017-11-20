@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import kaufland.com.todo.R;
 import kaufland.com.todo.ui.goal.AddGoalActivity;
 import kaufland.com.todo.ui.todo.AddTodoActivity;
+import kaufland.com.todoValue.R;
 
 public class MainActivity extends AppCompatActivity {
 

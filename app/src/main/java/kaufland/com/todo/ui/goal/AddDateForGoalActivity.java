@@ -9,10 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 
-import kaufland.com.todo.R;
 import kaufland.com.todo.data.GoalRepository;
 import kaufland.com.todo.db.entity.Goal;
 import kaufland.com.todo.ui.MainActivity;
+import kaufland.com.todoValue.R;
 
 public class AddDateForGoalActivity extends AppCompatActivity {
 

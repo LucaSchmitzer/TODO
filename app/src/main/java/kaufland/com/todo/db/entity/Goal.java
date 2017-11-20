@@ -5,7 +5,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.support.annotation.NonNull;
 
-@Entity(primaryKeys = {"goal", "date"},tableName = "goal")
+@Entity(primaryKeys = {"goal", "date"})
 public class Goal {
 
     @ColumnInfo(name = "goal")
