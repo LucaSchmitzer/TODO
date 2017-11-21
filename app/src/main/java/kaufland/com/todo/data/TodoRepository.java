@@ -13,13 +13,13 @@ public class TodoRepository extends AndroidViewModel {
 
     private Todo todoObject;
 
-    private AppDatabase db;
+    private final AppDatabase db;
 
     private List<Todo> todoList;
 
     public TodoRepository(@NonNull Application application) {
         super(application);
-        db = AppDatabase.getTodoDatabase(this.getApplication());
+        db = AppDatabase.getGoalDatabase(this.getApplication());
         todoList = db.todoDao().loadAllTodos();
     }
 

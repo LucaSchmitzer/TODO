@@ -16,10 +16,6 @@ import kaufland.com.todo.db.entity.Goal;
 
 import static junit.framework.Assert.assertEquals;
 
-/**
- * Created by lsch0909 on 21.11.17.
- */
-
 public class GaolDatabaseTest {
 
     private AppDatabase db;

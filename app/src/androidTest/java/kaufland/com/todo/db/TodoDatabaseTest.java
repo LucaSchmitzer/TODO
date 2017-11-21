@@ -12,15 +12,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import kaufland.com.todo.db.AppDatabase;
 import kaufland.com.todo.db.dao.TodoDao;
 import kaufland.com.todo.db.entity.Todo;
 
 import static junit.framework.Assert.assertEquals;
 
-/**
- * Created by lsch0909 on 21.11.17.
- */
 
 public class TodoDatabaseTest {
 

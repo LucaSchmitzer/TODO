@@ -7,12 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.List;
-
+import kaufland.com.todo.R;
 import kaufland.com.todo.data.TodoRepository;
 import kaufland.com.todo.db.entity.Todo;
 import kaufland.com.todo.ui.MainActivity;
-import kaufland.com.todo.R;
 
 public class AddTodoActivity extends AppCompatActivity {
 
@@ -23,8 +21,6 @@ public class AddTodoActivity extends AppCompatActivity {
     private TextView todoTitle;
 
     private Todo todo;
-
-    private List<Todo> todos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +41,11 @@ public class AddTodoActivity extends AppCompatActivity {
         });
     }
 
-    private List<Todo> saveToDB() {
+    private void saveToDB() {
         new Thread() {
             public void run() {
                 new TodoRepository(getApplication()).saveTodo(todo);
-                todos = new TodoRepository(getApplication()).getAllTodos();
             }
         }.start();
-        return todos;
     }
 }

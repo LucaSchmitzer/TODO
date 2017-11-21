@@ -13,17 +13,13 @@ import kaufland.com.todo.db.AppDatabase;
 import kaufland.com.todo.db.entity.Goal;
 import kaufland.com.todo.ui.goal.AddDateForGoalActivity;
 
-/**
- * Created by lsch0909 on 16.11.17.
- */
-
 public class GoalRepository extends AndroidViewModel{
 
     private Calendar calendar;
 
     private Goal goalObject;
 
-    private AppDatabase db;
+    private final AppDatabase db;
 
     private List<Goal> goals;
 
@@ -37,10 +33,6 @@ public class GoalRepository extends AndroidViewModel{
         calendar.set(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
         goalObject.setDate(calendar.getTime().toString());
         return goalObject.getDate();
-    }
-
-    public Goal createGoal(String goal, String date) {
-        return goalObject = new Goal(goal, date);
     }
 
     public void saveGoal(Goal goalParameter) {
