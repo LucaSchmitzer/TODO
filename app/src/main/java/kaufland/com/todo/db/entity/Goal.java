@@ -17,8 +17,7 @@ public class Goal {
     private String date;
 
 
-    public Goal(String goal, String date) {
-
+    public Goal(@NonNull String goal, @NonNull String date) {
         this.goal = goal;
         this.date = date;
     }
