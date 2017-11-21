@@ -19,7 +19,7 @@ public class TodoRepository extends AndroidViewModel {
 
     public TodoRepository(@NonNull Application application) {
         super(application);
-        db = AppDatabase.getDatabase(this.getApplication());
+        db = AppDatabase.getTodoDatabase(this.getApplication());
         todoList = db.todoDao().loadAllTodos();
     }
 
