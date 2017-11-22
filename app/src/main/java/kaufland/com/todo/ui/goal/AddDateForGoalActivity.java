@@ -30,7 +30,7 @@ public class AddDateForGoalActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                date = new AddGoalActivity().getGoalRepository().getDateFromDatePicker(datePicker);
+                date = new GoalRepository(getApplication()).getDateFromDatePicker(datePicker);
                 saveToDB();
             }
         });
