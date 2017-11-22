@@ -38,6 +38,7 @@ public abstract class AppDatabase extends RoomDatabase {
         return DB;
     }
 
+
   /*  static final Migration MIGRATION_1_2 = new Migration(1, 2){
 
         @Override

@@ -2,7 +2,6 @@ package kaufland.com.todo.data;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
-import android.arch.persistence.room.Room;
 import android.support.annotation.NonNull;
 import android.widget.DatePicker;
 
@@ -11,7 +10,6 @@ import java.util.List;
 
 import kaufland.com.todo.db.AppDatabase;
 import kaufland.com.todo.db.entity.Goal;
-import kaufland.com.todo.ui.goal.AddDateForGoalActivity;
 
 public class GoalRepository extends AndroidViewModel{
 
@@ -25,7 +23,7 @@ public class GoalRepository extends AndroidViewModel{
 
     public GoalRepository(@NonNull Application application){
         super(application);
-        db = Room.databaseBuilder(AddDateForGoalActivity.getContext(), AppDatabase.class, "goal").build();
+        db = AppDatabase.getGoalDatabase(this.getApplication());
         goals = db.goalDao().loadAllGoals();
     }
 
