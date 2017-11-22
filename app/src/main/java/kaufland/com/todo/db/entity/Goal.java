@@ -9,9 +9,11 @@ import android.support.annotation.NonNull;
 public class Goal {
 
     @ColumnInfo(name = "goal")
+    @NonNull
     private String goal;
 
     @ColumnInfo(name = "date")
+    @NonNull
     private String date;
 
 

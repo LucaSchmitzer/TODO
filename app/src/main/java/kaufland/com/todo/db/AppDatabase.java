@@ -11,7 +11,7 @@ import kaufland.com.todo.db.dao.TodoDao;
 import kaufland.com.todo.db.entity.Goal;
 import kaufland.com.todo.db.entity.Todo;
 
-@Database(entities = {Todo.class, Goal.class}, version = 2)
+@Database(entities = {Todo.class, Goal.class}, version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract TodoDao todoDao();

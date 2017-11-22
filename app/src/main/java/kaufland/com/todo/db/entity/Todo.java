@@ -9,11 +9,12 @@ import android.support.annotation.NonNull;
 public class Todo {
 
     @ColumnInfo(name = "todo")
+    @NonNull
     private String todo;
 
     @ColumnInfo(name = "description")
+    @NonNull
     private String description;
-
 
     public Todo(@NonNull String todo, @NonNull String description) {
         this.todo = todo;
