@@ -7,9 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import kaufland.com.todo.data.GoalRepository;
-import kaufland.com.todo.db.entity.Goal;
 import kaufland.com.todo.R;
+import kaufland.com.todo.db.entity.Goal;
 
 public class AddGoalActivity extends AppCompatActivity {
 
@@ -18,8 +17,6 @@ public class AddGoalActivity extends AppCompatActivity {
     private TextView goalInput;
 
     private Goal goal;
-
-    private GoalRepository goalRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +30,6 @@ public class AddGoalActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), AddDateForGoalActivity.class));
             }
         });
-    }
-
-    public GoalRepository getGoalRepository() {
-        return goalRepository;
     }
 
     public Goal getGoal() {

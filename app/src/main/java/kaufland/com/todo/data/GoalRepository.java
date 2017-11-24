@@ -13,9 +13,9 @@ import kaufland.com.todo.db.entity.Goal;
 
 public class GoalRepository extends AndroidViewModel{
 
-    private Calendar calendar;
+    private Calendar calendar = Calendar.getInstance();;
 
-    private Goal goalObject;
+    private Goal goalObject = new Goal();
 
     private final AppDatabase db;
 
@@ -28,7 +28,7 @@ public class GoalRepository extends AndroidViewModel{
     }
 
     public String getDateFromDatePicker(DatePicker datePicker) {
-        calendar.set(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
+         calendar.set(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
         goalObject.setDate(calendar.getTime().toString());
         return goalObject.getDate();
     }

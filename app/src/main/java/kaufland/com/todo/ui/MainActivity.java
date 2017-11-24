@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         /*(listView = findViewById(R.id.todoListView)).setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //TODO
+                //TODO Create a ListView for Main Activity or create a new Activity for the Listview
             }
         });*/
     }
