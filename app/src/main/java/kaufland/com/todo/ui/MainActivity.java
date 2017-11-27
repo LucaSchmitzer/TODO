@@ -5,13 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import kaufland.com.todo.R;
-import kaufland.com.todo.db.entity.Todo;
 import kaufland.com.todo.ui.goal.AddGoalActivity;
 import kaufland.com.todo.ui.todo.AddTodoActivity;
 
@@ -20,14 +15,6 @@ public class MainActivity extends AppCompatActivity {
     private Button addTodo;
 
     private Button addGoals;
-
-    private final MainActivity myActivity = MainActivity.this;
-
-    private ListView listView;
-
-    private List<Todo> todoList = new ArrayList<>();
-
-    private String[] listItems;
 
     //TODO ADD TODOD und ADD GOAL IN GOAL UND TODO transformieren und dafür bei den neuen layouts ein plus oder
     // TODO so für hinzufügen machen und dort nach einem click auf das alte Layout verweisen

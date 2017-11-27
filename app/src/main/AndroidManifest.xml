@@ -29,6 +29,10 @@
         <activity
             android:name=".ui.goal.AddDateForGoalActivity"
             android:label="@string/title_activity_add_date_for_goal"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AllTodos"
+            android:label="@string/title_activity_all_todos"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
