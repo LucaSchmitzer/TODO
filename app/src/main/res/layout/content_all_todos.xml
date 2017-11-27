@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="kaufland.com.todo.AllTodos"
+    tools:context="kaufland.com.todo.ui.todo.AllTodos"
     tools:showIn="@layout/activity_all_todos">
 
     <ListView
@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.142" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/newTodo"
         android:layout_width="60dp"
         android:layout_height="48dp"
         android:layout_marginBottom="8dp"
