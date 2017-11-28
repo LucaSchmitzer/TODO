@@ -4,4 +4,5 @@
     <string name="title_activity_add_goal">Add Goal</string>
     <string name="title_activity_add_date_for_goal">Add Date</string>
     <string name="title_activity_all_todos">AllTodos</string>
+    <string name="title_activity_all_goals">AllGoals</string>
 </resources>

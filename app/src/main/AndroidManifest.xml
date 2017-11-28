@@ -33,6 +33,10 @@
         <activity
             android:name=".ui.todo.AllTodos"
             android:label="@string/title_activity_all_todos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AllGoals"
+            android:label="@string/title_activity_all_goals"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
