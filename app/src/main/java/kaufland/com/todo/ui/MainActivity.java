@@ -6,9 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import kaufland.com.todo.AllGoals;
 import kaufland.com.todo.R;
 import kaufland.com.todo.ui.goal.AddGoalActivity;
 import kaufland.com.todo.ui.todo.AddTodoActivity;
+import kaufland.com.todo.ui.todo.AllTodos;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,13 +28,13 @@ public class MainActivity extends AppCompatActivity {
         (addTodo = findViewById(R.id.BaddTodo)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), AddTodoActivity.class));
+                startActivity(new Intent(getApplicationContext(), AllTodos.class));
             }
         });
         (addGoals = findViewById(R.id.bAddGoals)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), AddGoalActivity.class));
+                startActivity(new Intent(getApplicationContext(), AllGoals.class));
             }
         });
         /*(listView = findViewById(R.id.todoListView)).setOnItemClickListener(new AdapterView.OnItemClickListener() {
