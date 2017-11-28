@@ -23,7 +23,7 @@ public class GoalRepository extends AndroidViewModel {
 
     public GoalRepository(@NonNull Application application) {
         super(application);
-        db = AppDatabase.getGoalDatabase(this.getApplication());
+        db = AppDatabase.getGoalDatabase(this.getApplication().getApplicationContext());
         goals = db.goalDao().loadAllGoals();
     }
 

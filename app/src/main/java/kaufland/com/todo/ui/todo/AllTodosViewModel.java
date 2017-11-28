@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.content.Context;
 import android.os.Handler;
 
 import java.util.ArrayList;
@@ -32,8 +33,10 @@ public class AllTodosViewModel extends ViewModel {
         new Handler().postDelayed(() -> {
             List<String> todoArrayList = new AllTodosActivity().getDbTodos();
             long seed = System.nanoTime();
-            Collections.shuffle(todoArrayList, new Random(seed));
-            todoList.setValue(todoArrayList);
+            if (todoArrayList != null) {
+                Collections.shuffle(todoArrayList, new Random(seed));
+                todoList.setValue(todoArrayList);
+            }
         }, 5000);
 
     }

@@ -17,17 +17,18 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 import kaufland.com.todo.R;
 import kaufland.com.todo.data.TodoRepository;
-import kaufland.com.todo.db.entity.Todo;
+
 
 public class AllTodosActivity extends AppCompatActivity {
 
     private ListView todoView;
 
     private Button newTodo;
+
+    private List<String> todoStringList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +55,11 @@ public class AllTodosActivity extends AppCompatActivity {
     }
 
     public List<String> getDbTodos() {
-        List<String> todoStringList = new ArrayList<>();
-        for (int i = 0; i < new TodoRepository(this.getApplication()).getAllTodos().size(); i++) {
-            todoStringList.add(new TodoRepository(getApplication()).getAllTodos().get(i).getTodo());
-        }
+        new Thread() {
+            public void run() {
+                todoStringList = new TodoRepository(getApplication()).todosFromDb();
+            }
+        }.start();
         return todoStringList;
     }
 

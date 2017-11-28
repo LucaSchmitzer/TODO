@@ -17,10 +17,17 @@ public class TodoRepository extends AndroidViewModel {
 
     private List<Todo> todoList;
 
+    private List<String> strings;
+
     public TodoRepository(@NonNull Application application) {
         super(application);
-        db = AppDatabase.getTodoDatabase(this.getApplication());
+        db = AppDatabase.getTodoDatabase(this.getApplication().getApplicationContext());
         todoList = db.todoDao().loadAllTodos();
+        strings = db.todoDao().todosFromDB();
+    }
+
+    public List<String> todosFromDb(){
+        return strings;
     }
 
     public void saveTodo(Todo todoParam) {
