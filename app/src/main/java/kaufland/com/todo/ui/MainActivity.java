@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import kaufland.com.todo.ui.goal.AllGoals;
 import kaufland.com.todo.R;
-import kaufland.com.todo.ui.todo.AllTodos;
+import kaufland.com.todo.ui.todo.AllTodosActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         (addTodo = findViewById(R.id.BaddTodo)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), AllTodos.class));
+                startActivity(new Intent(getApplicationContext(), AllTodosActivity.class));
             }
         });
         (addGoals = findViewById(R.id.bAddGoals)).setOnClickListener(new View.OnClickListener() {

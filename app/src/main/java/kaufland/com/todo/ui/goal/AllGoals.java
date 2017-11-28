@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import kaufland.com.todo.R;
+import kaufland.com.todo.data.GoalRepository;
 import kaufland.com.todo.ui.goal.AddGoalActivity;
 
 public class AllGoals extends AppCompatActivity {
