@@ -1,4 +1,4 @@
-package kaufland.com.todo;
+package kaufland.com.todo.ui.goal;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import kaufland.com.todo.R;
 import kaufland.com.todo.ui.goal.AddGoalActivity;
 
 public class AllGoals extends AppCompatActivity {
