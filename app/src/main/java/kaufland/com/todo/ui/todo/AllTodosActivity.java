@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import kaufland.com.todo.R;
@@ -31,13 +32,15 @@ public class AllTodosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_all_todos);
         todoView = findViewById(R.id.todoView);
         instance = this;
-        final List<Todo> todoList = new TodoRepository(instance.getApplication()).getAllTodos();
-        String[] listItems = new String[todoList.size() + 1];
-        for (int i = 0; i < todoList.size(); i++) {
+        final List<Todo> todoList = new TodoRepository(getApplication()).getAllTodos();
+        String[] listItems = new String[todoList.size()];
+        for (int i = 0; i < todoList.size();) {
             Todo todo = todoList.get(i);
             listItems[i] = todo.getTodo();
+            i++;
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(instance.getApplicationContext(), android.R.layout.simple_list_item_1, listItems);
+        List<String> stringList = new ArrayList<String>(Arrays.asList(listItems));
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, stringList);
         todoView.setAdapter(adapter);
         //AllTodosViewModel model = ViewModelProviders.of(this).get(AllTodosViewModel.class);
         /*model.getTodoList().observe(this, todos -> {
