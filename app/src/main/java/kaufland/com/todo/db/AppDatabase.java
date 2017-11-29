@@ -38,14 +38,4 @@ public abstract class AppDatabase extends RoomDatabase {
         return DB;
     }
 
-
-  /*  static final Migration MIGRATION_1_2 = new Migration(1, 2){
-
-        @Override
-        public void migrate(@NonNull SupportSQLiteDatabase database) {
-            database.execSQL("CREATE TABLE 'to do' ('tod o' String, 'description' String, PRIMARY KEY('tod o', 'description'))");
-        }
-    };*/
-
-
 }
