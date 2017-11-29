@@ -31,13 +31,13 @@ public class AllTodosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_all_todos);
         todoView = findViewById(R.id.todoView);
         instance = this;
-        final List<Todo> todoList = new TodoRepository(getApplication()).getAllTodos();
-        String[] listItems = new String[todoList.size()];
+        final List<Todo> todoList = new TodoRepository(instance.getApplication()).getAllTodos();
+        String[] listItems = new String[todoList.size() + 1];
         for (int i = 0; i < todoList.size(); i++) {
             Todo todo = todoList.get(i);
             listItems[i] = todo.getTodo();
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, listItems);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(instance.getApplicationContext(), android.R.layout.simple_list_item_1, listItems);
         todoView.setAdapter(adapter);
         //AllTodosViewModel model = ViewModelProviders.of(this).get(AllTodosViewModel.class);
         /*model.getTodoList().observe(this, todos -> {
