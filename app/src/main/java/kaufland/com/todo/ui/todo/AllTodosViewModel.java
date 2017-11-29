@@ -1,21 +1,13 @@
 package kaufland.com.todo.ui.todo;
 
-import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-import android.content.Context;
 import android.os.Handler;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-
-import kaufland.com.todo.data.TodoRepository;
-import kaufland.com.todo.db.entity.Todo;
-import kaufland.com.todo.ui.MainActivity;
-
 
 public class AllTodosViewModel extends ViewModel {
 

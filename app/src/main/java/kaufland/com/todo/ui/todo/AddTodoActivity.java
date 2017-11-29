@@ -1,7 +1,5 @@
 package kaufland.com.todo.ui.todo;
 
-import android.app.Application;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
