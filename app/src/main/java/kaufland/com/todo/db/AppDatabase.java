@@ -23,7 +23,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getTodoDatabase(Context context) {
         if (DB == null) {
             DB =
-                    Room.databaseBuilder(context, AppDatabase.class, "todo").fallbackToDestructiveMigration()
+                    Room.databaseBuilder(context, AppDatabase.class, "todo").fallbackToDestructiveMigration().allowMainThreadQueries()
                             .build();
         }
         return DB;
@@ -32,7 +32,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getGoalDatabase(Context context){
         if (DB == null){
             DB =
-                    Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "goal").fallbackToDestructiveMigration()
+                    Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "goal").fallbackToDestructiveMigration().allowMainThreadQueries()
                     .build();
         }
         return DB;

@@ -14,7 +14,7 @@ public class TodoRepository extends AndroidViewModel {
 
     private final AppDatabase db;
 
-    private List<Todo> todoList = new ArrayList<>();
+    private volatile List<Todo> todoList = new ArrayList<>();
 
     private List<String> strings = new ArrayList<>();
 
@@ -23,8 +23,8 @@ public class TodoRepository extends AndroidViewModel {
         db = AppDatabase.getTodoDatabase(this.getApplication().getApplicationContext());
     }
 
-    public List<String> todosFromDb(){
-        todoList = getAllTodos();
+    public List<String> todosFromDb() {
+          todoList = getAllTodos();
         for (int i = 0; i < todoList.size(); i++) {
             strings.add(todoList.get(i).getTodo());
         }
@@ -36,12 +36,12 @@ public class TodoRepository extends AndroidViewModel {
     }
 
     public List<Todo> getAllTodos() {
-        todoList =  db.todoDao().loadAllTodos();
+        todoList = db.todoDao().loadAllTodos();
+        return todoList;
+
+    }
+
+    public List<Todo> getTodoList() {
         return todoList;
     }
-
-    public void closeDB(){
-        db.close();
-    }
-
 }

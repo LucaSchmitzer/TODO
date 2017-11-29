@@ -20,7 +20,7 @@ public class AddTodoActivity extends AppCompatActivity {
 
     private Todo todo;
 
-    private AddTodoActivity instance;
+    private static AddTodoActivity instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

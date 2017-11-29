@@ -1,6 +1,5 @@
 package kaufland.com.todo.ui.todo;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +12,7 @@ import java.util.List;
 
 import kaufland.com.todo.R;
 import kaufland.com.todo.data.TodoRepository;
+import kaufland.com.todo.db.entity.Todo;
 
 
 public class AllTodosActivity extends AppCompatActivity {
@@ -23,28 +23,44 @@ public class AllTodosActivity extends AppCompatActivity {
 
     private List<String> todoStringList = new ArrayList<>();
 
-    private AllTodosActivity instance;
+    private static AllTodosActivity instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_todos);
+        todoView = findViewById(R.id.todoView);
         instance = this;
-        AllTodosViewModel model = ViewModelProviders.of(this).get(AllTodosViewModel.class);
-        model.getTodoList().observe(this, todos -> {
+        final List<Todo> todoList = new TodoRepository(getApplication()).getAllTodos();
+        String[] listItems = new String[todoList.size()];
+        for (int i = 0; i < todoList.size(); i++) {
+            Todo todo = todoList.get(i);
+            listItems[i] = todo.getTodo();
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, listItems);
+        todoView.setAdapter(adapter);
+        //AllTodosViewModel model = ViewModelProviders.of(this).get(AllTodosViewModel.class);
+        /*model.getTodoList().observe(this, todos -> {
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, todos);
             todoView.setAdapter(arrayAdapter);
             //progressBar.setVisibility(View.GONE);
-        });
-        (todoView = findViewById(R.id.todoView)).setOnItemClickListener((adapterView, view, i, l) -> {
+        });*/
+        todoView.setOnItemClickListener((adapterView, view, i, l) -> {
 
         });
         (newTodo = findViewById(R.id.newTodo)).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), AddTodoActivity.class)));
     }
 
     public List<String> getDbTodos() {
-        todoStringList = new TodoRepository(instance.getApplication()).todosFromDb();
-        return todoStringList;
+        new Thread() {
+            public void run() {
+                todoStringList = new TodoRepository(instance.getApplication()).todosFromDb();
+            }
+        }.start();
+        return getTodoStringList();
     }
 
+    public List<String> getTodoStringList() {
+        return todoStringList;
+    }
 }

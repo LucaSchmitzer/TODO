@@ -14,7 +14,7 @@ public class AddDateForGoalActivity extends AppCompatActivity {
 
     private Button save;
     private DatePicker datePicker;
-    private AddDateForGoalActivity instance;
+    private static AddDateForGoalActivity instance;
     private Goal goalObject;
 
     @Override
