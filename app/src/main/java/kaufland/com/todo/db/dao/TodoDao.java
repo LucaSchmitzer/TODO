@@ -20,9 +20,6 @@ public interface TodoDao {
     @Query("SELECT * FROM todo")
     LiveData<Todo> liveTodos();
 
-    @Query("SELECT todo FROM todo")
-    List<String> todosFromDB();
-
     @Insert
     void insertTodo(Todo todo);
 
