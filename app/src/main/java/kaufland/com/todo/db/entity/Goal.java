@@ -3,10 +3,14 @@ package kaufland.com.todo.db.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(primaryKeys = {"goal", "date"})
+@Entity
 public class Goal {
+
+    @PrimaryKey(autoGenerate = true)
+    private int id;
 
     @ColumnInfo(name = "goal")
     @NonNull
@@ -17,9 +21,10 @@ public class Goal {
     private String date;
 
 
-    public Goal(@NonNull String goal, @NonNull String date) {
+    public Goal(@NonNull String goal, @NonNull String date, int id) {
         this.goal = goal;
         this.date = date;
+        this.id = id;
     }
 
     @Ignore
@@ -42,5 +47,9 @@ public class Goal {
 
     public void setDate(@NonNull String date) {
         this.date = date;
+    }
+
+    public int getId() {
+        return id;
     }
 }

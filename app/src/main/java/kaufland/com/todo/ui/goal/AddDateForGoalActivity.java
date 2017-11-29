@@ -11,7 +11,6 @@ import android.widget.DatePicker;
 import kaufland.com.todo.R;
 import kaufland.com.todo.data.GoalRepository;
 import kaufland.com.todo.db.entity.Goal;
-import kaufland.com.todo.ui.MainActivity;
 
 public class AddDateForGoalActivity extends AppCompatActivity {
 
@@ -29,7 +28,7 @@ public class AddDateForGoalActivity extends AppCompatActivity {
         (save = findViewById(R.id.save)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), AllGoalsActivity.class));
                 date = new GoalRepository(getApplication()).getDateFromDatePicker(datePicker);
                 saveToDB();
             }

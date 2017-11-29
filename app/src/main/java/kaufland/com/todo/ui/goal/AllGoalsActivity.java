@@ -2,20 +2,15 @@ package kaufland.com.todo.ui.goal;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
 import kaufland.com.todo.R;
-import kaufland.com.todo.data.GoalRepository;
-import kaufland.com.todo.ui.goal.AddGoalActivity;
 
-public class AllGoals extends AppCompatActivity {
+public class AllGoalsActivity extends AppCompatActivity {
 
     private ListView goalView;
 

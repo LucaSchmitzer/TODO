@@ -11,7 +11,7 @@ import kaufland.com.todo.db.dao.TodoDao;
 import kaufland.com.todo.db.entity.Goal;
 import kaufland.com.todo.db.entity.Todo;
 
-@Database(entities = {Todo.class, Goal.class}, version = 2, exportSchema = false)
+@Database(entities = {Todo.class, Goal.class}, version = 3, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract TodoDao todoDao();
@@ -23,7 +23,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getTodoDatabase(Context context) {
         if (DB == null) {
             DB =
-                    Room.databaseBuilder(context, AppDatabase.class, "todo").fallbackToDestructiveMigration().allowMainThreadQueries()
+                    Room.databaseBuilder(context, AppDatabase.class, "todo").fallbackToDestructiveMigration()
                             .build();
         }
         return DB;
@@ -32,7 +32,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getGoalDatabase(Context context){
         if (DB == null){
             DB =
-                    Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "goal").fallbackToDestructiveMigration().allowMainThreadQueries()
+                    Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "goal").fallbackToDestructiveMigration()
                     .build();
         }
         return DB;
