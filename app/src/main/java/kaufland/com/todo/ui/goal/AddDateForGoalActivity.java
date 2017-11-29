@@ -17,19 +17,23 @@ public class AddDateForGoalActivity extends AppCompatActivity {
     private Button save;
     private DatePicker datePicker;
     private static Context context;
-    private String date;
+    private AddDateForGoalActivity instance;
+    private Goal goalObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        instance = this;
         context = getApplicationContext();
         setContentView(R.layout.activity_add_date_for_goal);
         datePicker = findViewById(R.id.dateGoal);
         (save = findViewById(R.id.save)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                goalObject = new Goal();
                 startActivity(new Intent(getApplicationContext(), AllGoalsActivity.class));
-                date = new GoalRepository(getApplication()).getDateFromDatePicker(datePicker);
+                goalObject.setDate(new GoalRepository(instance.getApplication()).getDateFromDatePicker(datePicker));
+                goalObject.setGoal(new AddGoalActivity().getGoal().getGoal());
                 saveToDB();
             }
         });
@@ -38,8 +42,7 @@ public class AddDateForGoalActivity extends AppCompatActivity {
     private void saveToDB() {
         new Thread() {
             public void run() {
-                //TODO exception handling
-                new GoalRepository(getApplication()).saveGoal(new Goal(new AddGoalActivity().getGoal().getGoal(), date));
+                new GoalRepository(instance.getApplication()).saveGoal(goalObject);
             }
         }.start();
     }

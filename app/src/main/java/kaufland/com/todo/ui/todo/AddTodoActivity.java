@@ -10,7 +10,6 @@ import android.widget.TextView;
 import kaufland.com.todo.R;
 import kaufland.com.todo.data.TodoRepository;
 import kaufland.com.todo.db.entity.Todo;
-import kaufland.com.todo.ui.MainActivity;
 
 public class AddTodoActivity extends AppCompatActivity {
 
@@ -35,7 +34,7 @@ public class AddTodoActivity extends AppCompatActivity {
                 todo = new Todo();
                 todo.setTodo(todoTitle.toString());
                 todo.setDescription(todoDescription.toString());
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), AllTodosActivity.class));
                 saveToDB();
             }
         });

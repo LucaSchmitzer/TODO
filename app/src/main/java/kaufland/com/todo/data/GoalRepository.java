@@ -5,6 +5,7 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 import android.widget.DatePicker;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class GoalRepository extends AndroidViewModel {
 
     private final AppDatabase db;
 
-    private List<Goal> goals;
+    private List<Goal> goals = new ArrayList<>();
 
     public GoalRepository(@NonNull Application application) {
         super(application);

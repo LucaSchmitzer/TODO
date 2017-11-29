@@ -20,9 +20,10 @@ public class Todo {
     @NonNull
     private String description;
 
-    public Todo(@NonNull String todo, @NonNull String description) {
+    public Todo(@NonNull String todo, @NonNull String description, int id) {
         this.todo = todo;
         this.description = description;
+        this.id = id;
     }
 
     @Ignore
@@ -45,4 +46,7 @@ public class Todo {
         this.todo = todo;
     }
 
+    public int getId() {
+        return id;
+    }
 }
