@@ -4,8 +4,6 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -38,18 +36,10 @@ public class AllTodosActivity extends AppCompatActivity {
             todoView.setAdapter(arrayAdapter);
             //progressBar.setVisibility(View.GONE);
         });
-        (todoView = findViewById(R.id.todoView)).setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        (todoView = findViewById(R.id.todoView)).setOnItemClickListener((adapterView, view, i, l) -> {
 
-            }
         });
-        (newTodo = findViewById(R.id.newTodo)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), AddTodoActivity.class));
-            }
-        });
+        (newTodo = findViewById(R.id.newTodo)).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), AddTodoActivity.class)));
     }
 
     public List<String> getDbTodos() {

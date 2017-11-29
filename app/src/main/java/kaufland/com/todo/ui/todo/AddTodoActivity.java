@@ -3,7 +3,6 @@ package kaufland.com.todo.ui.todo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -31,15 +30,12 @@ public class AddTodoActivity extends AppCompatActivity {
         todoTitle = findViewById(R.id.todoTitle);
         todoDescription = findViewById(R.id.description);
         addTodo = findViewById(R.id.BaddTodo);
-        addTodo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                todo = new Todo();
-                todo.setTodo(todoTitle.toString());
-                todo.setDescription(todoDescription.toString());
-                startActivity(new Intent(getApplicationContext(), AllTodosActivity.class));
-                saveToDB();
-            }
+        addTodo.setOnClickListener(view -> {
+            todo = new Todo();
+            todo.setTodo(todoTitle.toString());
+            todo.setDescription(todoDescription.toString());
+            startActivity(new Intent(getApplicationContext(), AllTodosActivity.class));
+            saveToDB();
         });
     }
 

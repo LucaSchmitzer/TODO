@@ -3,7 +3,6 @@ package kaufland.com.todo.ui.goal;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 
@@ -24,15 +23,12 @@ public class AddDateForGoalActivity extends AppCompatActivity {
         instance = this;
         setContentView(R.layout.activity_add_date_for_goal);
         datePicker = findViewById(R.id.dateGoal);
-        (save = findViewById(R.id.save)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goalObject = new Goal();
-                startActivity(new Intent(getApplicationContext(), AllGoalsActivity.class));
-                goalObject.setDate(new GoalRepository(instance.getApplication()).getDateFromDatePicker(datePicker));
-                goalObject.setGoal(new AddGoalActivity().getGoal().getGoal());
-                saveToDB();
-            }
+        (save = findViewById(R.id.save)).setOnClickListener(v -> {
+            goalObject = new Goal();
+            startActivity(new Intent(getApplicationContext(), AllGoalsActivity.class));
+            goalObject.setDate(new GoalRepository(instance.getApplication()).getDateFromDatePicker(datePicker));
+            goalObject.setGoal(new AddGoalActivity().getGoal().getGoal());
+            saveToDB();
         });
     }
 
