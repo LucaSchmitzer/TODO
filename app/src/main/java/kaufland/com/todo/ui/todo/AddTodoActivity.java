@@ -21,10 +21,13 @@ public class AddTodoActivity extends AppCompatActivity {
 
     private Todo todo;
 
+    private AddTodoActivity instance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_todo);
+        instance = this;
         todoTitle = findViewById(R.id.todoTitle);
         todoDescription = findViewById(R.id.description);
         addTodo = findViewById(R.id.BaddTodo);
@@ -43,7 +46,7 @@ public class AddTodoActivity extends AppCompatActivity {
     private void saveToDB() {
         new Thread() {
             public void run() {
-                new TodoRepository(getApplication()).saveTodo(todo);
+                new TodoRepository(instance.getApplication()).saveTodo(todo);
             }
         }.start();
     }

@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import kaufland.com.todo.R;
@@ -22,7 +23,7 @@ public class AllTodosActivity extends AppCompatActivity {
 
     private Button newTodo;
 
-    private List<String> todoStringList;
+    private List<String> todoStringList = new ArrayList<>();
 
     private AllTodosActivity instance;
 
