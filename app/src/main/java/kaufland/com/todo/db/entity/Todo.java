@@ -30,6 +30,7 @@ public class Todo {
     public Todo() {
     }
 
+    @NonNull
     public String getDescription() {
         return description;
     }
@@ -38,6 +39,7 @@ public class Todo {
         this.description = description;
     }
 
+    @NonNull
     public String getTodo() {
         return todo;
     }

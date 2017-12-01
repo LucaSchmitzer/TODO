@@ -34,12 +34,12 @@ public class AllTodosActivity extends AppCompatActivity {
         instance = this;
         final List<Todo> todoList = new TodoRepository(getApplication()).getAllTodos();
         String[] listItems = new String[todoList.size()];
-        for (int i = 0; i < todoList.size();) {
-            Todo todo = todoList.get(i);
-            listItems[i] = todo.getTodo();
-            i++;
+        if (todoList != null) {
+            for (int i = 0; i < todoList.size(); i++) {
+                listItems[i] = todoList.get(i).getTodo();
+            }
         }
-        List<String> stringList = new ArrayList<String>(Arrays.asList(listItems));
+        List<String> stringList = new ArrayList<>(Arrays.asList(listItems));
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, stringList);
         todoView.setAdapter(adapter);
         //AllTodosViewModel model = ViewModelProviders.of(this).get(AllTodosViewModel.class);

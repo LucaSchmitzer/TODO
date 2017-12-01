@@ -22,7 +22,7 @@ public class GaolDatabaseTest {
     private GoalDao goalDao;
 
     @Before
-    public void createDB(){
+    public void createDB() {
         Context context = InstrumentationRegistry.getTargetContext();
         db = Room.inMemoryDatabaseBuilder(context, AppDatabase.class).build();
         goalDao = db.goalDao();
@@ -30,12 +30,12 @@ public class GaolDatabaseTest {
 
 
     @Test
-    public void testGoalDB(){
+    public void testGoalDB() {
         List<Goal> goalList = new ArrayList<>();
         List<Goal> goalDBList;
         for (int i = 0; i < 100; i++) {
             Goal goalObject = new Goal();
-            goalObject.setGoal("Goal" +String.valueOf(i));
+            goalObject.setGoal("Goal" + String.valueOf(i));
             goalObject.setDate("Date" + String.valueOf(i));
             goalList.add(goalObject);
             goalDao.insertGoal(goalObject);
@@ -45,11 +45,10 @@ public class GaolDatabaseTest {
             assertEquals(goalList.get(i).getGoal(), goalDBList.get(i).getGoal());
             assertEquals(goalList.get(i).getDate(), goalDBList.get(i).getDate());
         }
-
     }
 
     @After
-    public void closeDB(){
+    public void closeDB() {
         db.close();
     }
 }

@@ -25,10 +25,10 @@ public class TodoDatabaseTest {
 
 
     @Before
-    public void createDB(){
+    public void createDB() {
         Context context = InstrumentationRegistry.getTargetContext();
         appDatabase = Room.inMemoryDatabaseBuilder(context, AppDatabase.class).build();
-        todoDao =  appDatabase.todoDao();
+        todoDao = appDatabase.todoDao();
     }
 
     @Test
@@ -47,7 +47,6 @@ public class TodoDatabaseTest {
             assertEquals(todoList.get(i).getTodo(), todoDBList.get(i).getTodo());
             assertEquals(todoList.get(i).getDescription(), todoDBList.get(i).getDescription());
         }
-
     }
 
     @After
