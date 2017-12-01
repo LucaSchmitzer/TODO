@@ -32,8 +32,8 @@ public class AddTodoActivity extends AppCompatActivity {
         addTodo = findViewById(R.id.BaddTodo);
         addTodo.setOnClickListener(view -> {
             todo = new Todo();
-            todo.setTodo(todoTitle.toString());
-            todo.setDescription(todoDescription.toString());
+            todo.setTodo(todoTitle.getText().toString());
+            todo.setDescription(todoDescription.getText().toString());
             startActivity(new Intent(getApplicationContext(), AllTodosActivity.class));
             saveToDB();
         });

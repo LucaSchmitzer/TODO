@@ -22,8 +22,6 @@ public class AllTodosActivity extends AppCompatActivity {
 
     private Button newTodo;
 
-    private List<String> todoStringList = new ArrayList<>();
-
     private static AllTodosActivity instance;
 
     @Override
@@ -42,28 +40,10 @@ public class AllTodosActivity extends AppCompatActivity {
         List<String> stringList = new ArrayList<>(Arrays.asList(listItems));
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, stringList);
         todoView.setAdapter(adapter);
-        //AllTodosViewModel model = ViewModelProviders.of(this).get(AllTodosViewModel.class);
-        /*model.getTodoList().observe(this, todos -> {
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, todos);
-            todoView.setAdapter(arrayAdapter);
-            //progressBar.setVisibility(View.GONE);
-        });*/
         todoView.setOnItemClickListener((adapterView, view, i, l) -> {
 
         });
         (newTodo = findViewById(R.id.newTodo)).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), AddTodoActivity.class)));
     }
 
-    public List<String> getDbTodos() {
-        new Thread() {
-            public void run() {
-                todoStringList = new TodoRepository(instance.getApplication()).todosFromDb();
-            }
-        }.start();
-        return getTodoStringList();
-    }
-
-    public List<String> getTodoStringList() {
-        return todoStringList;
-    }
 }

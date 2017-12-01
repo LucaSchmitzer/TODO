@@ -27,7 +27,7 @@ public class AddDateForGoalActivity extends AppCompatActivity {
             goalObject = new Goal();
             startActivity(new Intent(getApplicationContext(), AllGoalsActivity.class));
             goalObject.setDate(new GoalRepository(instance.getApplication()).getDateFromDatePicker(datePicker));
-            goalObject.setGoal(new AddGoalActivity().getGoal().getGoal());
+            goalObject.setGoal(new AddGoalActivity().getGoalString());
             saveToDB();
         });
     }

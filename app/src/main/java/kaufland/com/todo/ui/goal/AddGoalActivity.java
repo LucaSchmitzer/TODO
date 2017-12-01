@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import kaufland.com.todo.R;
-import kaufland.com.todo.db.entity.Goal;
 
 public class AddGoalActivity extends AppCompatActivity {
 
@@ -15,7 +14,7 @@ public class AddGoalActivity extends AppCompatActivity {
 
     private TextView goalInput;
 
-    private Goal goal;
+    private static String goalString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +22,12 @@ public class AddGoalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_goal);
         goalInput = findViewById(R.id.goalInput);
         (nextStep = findViewById(R.id.nextStep)).setOnClickListener(v -> {
-            (goal = new Goal()).setGoal(goalInput.toString());
+            goalString = goalInput.getText().toString();
             startActivity(new Intent(getApplicationContext(), AddDateForGoalActivity.class));
         });
     }
 
-    public Goal getGoal() {
-        return goal;
+    public static String getGoalString() {
+        return goalString;
     }
 }
