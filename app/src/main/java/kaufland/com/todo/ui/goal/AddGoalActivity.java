@@ -22,12 +22,16 @@ public class AddGoalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_goal);
         goalInput = findViewById(R.id.goalInput);
         (nextStep = findViewById(R.id.nextStep)).setOnClickListener(v -> {
-            goalString = goalInput.getText().toString();
+            setGoalString(goalInput.getText().toString());
             startActivity(new Intent(getApplicationContext(), AddDateForGoalActivity.class));
         });
     }
 
     public static String getGoalString() {
         return goalString;
+    }
+
+    public static void setGoalString(String goalString) {
+        AddGoalActivity.goalString = goalString;
     }
 }
