@@ -16,9 +16,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Button addGoals;
 
-    //TODO ADD TODOD und ADD GOAL IN GOAL UND TODO transformieren und dafür bei den neuen layouts ein plus oder
-    // TODO so für hinzufügen machen und dort nach einem click auf das alte Layout verweisen
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +32,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), AllGoalsActivity.class));
             }
         });
-        /*(listView = findViewById(R.id.todoListView)).setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //TODO Create a ListView for Main Activity or create a new Activity for the Listview
-            }
-        });*/
     }
 }
